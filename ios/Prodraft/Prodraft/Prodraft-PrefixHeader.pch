@@ -15,11 +15,25 @@
 #ifdef __OBJC__
 #import <UIKit/UIKit.h>
 #import <Foundation/Foundation.h>
+#import <QuartzCore/QuartzCore.h>
 #import "AppDelegate.h"
 #import "Services.h"
 #import <KinveyKit/KinveyKit.h>
 #import "Ranking.h"
 #import "Stat.h"
+#import "Contest.h"
+#import "Entry.h"
+#import "UIColor+HEX.h"
+#import "UIActionSheet+Blocks.h"
+#import "NSDictionary+NSDictionaryCategory.h"
+#import "UIView+UpdateAutoLayoutConstraints.h"
+#import "NSDate+NSDateCategory.h"
+#import "UIAlertView+Blocks.h"
+#import "UIImage+Custom.h"
+#import "UIFont+Custom.h"
+#import "UIColor+Custom.h"
+#import "Chameleon.h"
+#import "BaseController.h"
 #endif
 
 #define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
@@ -35,3 +49,26 @@
 
 #define kUserId @"UserId"
 #define kEmail @"Email"
+#define kRegularFontName @"ProximaNova-Regular"
+#define kSemiBoldFontName @"ProximaNova-Bold"
+#define kBoldFontName @"ProximaNova-Bold"
+
+enum {
+    ContestScheduleTypeNFL_All = 0,
+    ContestScheduleTypeNFL_Sun = 1,
+    ContestScheduleTypeNFL_SunMon = 2,
+    ContestScheduleTypeNFL_MonThur = 3,
+};
+typedef NSInteger ContestScheduleTypeInt;
+
+enum {
+    ContestTypeLeague = 0,
+};
+typedef NSInteger ContestTypeInt;
+
+enum {
+    ContestStatusLive = 0,
+    ContestStatusUpcoming = 1,
+    ContestStatusArchive = 2
+};
+typedef NSInteger ContestStatusInt;

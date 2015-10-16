@@ -8,6 +8,10 @@
 
 #import "AppDelegate.h"
 #import "LaunchController.h"
+#import "HomeController.h"
+#import "ContestsController.h"
+#import "ProfileController.h"
+#import "MoreController.h"
 #import <KinveyKit/KinveyKit.h>
 #import "Services.h"
 
@@ -27,13 +31,12 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor darkGrayColor];
+    [self initControllers];
     if ([[Services sharedInstance] checkAuth]) {
-        self.window.rootViewController = [[LaunchController alloc] initWithNibName:@"LaunchController" bundle:nil];
+        self.window.rootViewController = self.tabBarController;
     }
     else {
-        UIViewController *controller = [[UIViewController alloc] init];
-        controller.view.backgroundColor = [UIColor redColor];
-        self.window.rootViewController = controller;
+        self.window.rootViewController = [self customNavbar:[[LaunchController alloc] initWithNibName:@"LaunchController" bundle:nil]];
     }
     [self.window makeKeyAndVisible];
     return YES;
@@ -59,6 +62,49 @@
 
 - (void)applicationWillTerminate:(UIApplication *)application {
     // Called when the application is about to terminate. Save data if appropriate. See also applicationDidEnterBackground:.
+}
+
+#pragma mark - Custom Methods
+
+- (void)initControllers {
+    self.tabBarController = [[UITabBarController alloc] init];
+    self.tabBarController.viewControllers = @[[self customNavbar:[[HomeController alloc] initWithNibName:@"HomeController" bundle:nil]],
+                                              [self customNavbar:[[ContestsController alloc] initWithNibName:@"ContestsController" bundle:nil]],
+                                              [self customNavbar:[[ProfileController alloc] initWithNibName:@"ProfileController" bundle:nil]],
+                                              [self customNavbar:[[MoreController alloc] initWithNibName:@"MoreController" bundle:nil]]];
+    
+    self.tabBarController.selectedIndex = 0;
+    
+    [[UITabBar appearance] setTintColor:[UIColor CustomBlueColor]];
+    [[UITabBar appearance] setBarTintColor:[UIColor CustomTabGrayColor]];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont CustomRegularFontSize:10.0],
+                                                        NSForegroundColorAttributeName:[UIColor whiteColor]} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont CustomRegularFontSize:10.0],
+                                                        NSForegroundColorAttributeName:[UIColor CustomBlueColor]} forState:UIControlStateHighlighted];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont CustomRegularFontSize:10.0],
+                                                        NSForegroundColorAttributeName:[UIColor CustomBlueColor]} forState:UIControlStateSelected];
+    
+    for(UITabBarItem *item in _tabBarController.tabBar.items) {
+        item.image = [item.selectedImage imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal];
+    }
+}
+
+- (UINavigationController*)customNavbar:(UIViewController*)vc {
+    UINavigationController *nav = [[UINavigationController alloc] initWithRootViewController:vc];
+    [nav.navigationBar setBarTintColor:[UIColor CustomNavGrayColor]];
+    [nav.navigationBar setTranslucent:NO];
+    [nav.navigationBar setShadowImage:[[UIImage alloc] init]];
+    [nav.navigationBar setTintColor:[UIColor whiteColor]];
+    [nav.navigationBar setTitleTextAttributes:@{NSFontAttributeName:[UIFont CustomBoldFontSize:17],
+                                                NSForegroundColorAttributeName:[UIColor whiteColor]}];
+    
+    // Enable Back Button Pop on Nav Stack
+    if ([nav respondsToSelector:@selector(interactivePopGestureRecognizer)]) {
+        nav.interactivePopGestureRecognizer.enabled = YES;
+        nav.interactivePopGestureRecognizer.delegate = nil;
+    }
+    
+    return nav;
 }
 
 @end

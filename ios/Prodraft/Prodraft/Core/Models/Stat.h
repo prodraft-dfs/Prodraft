@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <KinveyKit/KinveyKit.h>
-#import "Ranking.h"
 
 @class Ranking;
 

@@ -25,6 +25,8 @@
 
 - (BOOL)checkAuth;
 - (void)login:(NSString*)username password:(NSString*)password withSuccess:(void (^)(KCSUser *user))completion;
+- (void)getContests:(void (^)(NSArray *success))completion;
+- (void)getEntries:(void (^)(NSArray *success))completion;
 - (void)getRankingsFrom:(NSString*)pos fromWeek:(NSNumber*)week withOptions:(NSDictionary*)options withSuccess:(void (^)(NSArray *success))completion;
 - (void)getStatsfromWeek:(NSNumber*)week fromPosition:(NSString*)pos withOptions:(NSDictionary*)options withSuccess:(void (^)(NSArray *success))completion;
 

@@ -90,6 +90,40 @@
     }];
 }
 
+- (void)getContests:(void (^)(NSArray *success))completion {
+    KCSQuery* query = [KCSQuery query];
+    [[KCSAppdataStore storeWithOptions:@{KCSStoreKeyCollectionName: [NSString stringWithFormat:@"Contests"],
+                                         KCSStoreKeyCollectionTemplateClass: [Contest class]}] queryWithQuery:query withCompletionBlock:^(NSArray *success, NSError *error) {
+        
+        if (error != nil) {
+            NSLog(@"An error occurred on fetch: %@", error);
+            completion(nil);
+        } else {
+            if (success && success.count > 0) {
+                completion(success);
+            }
+        }
+        
+    } withProgressBlock:nil];
+}
+
+- (void)getEntries:(void (^)(NSArray *success))completion {
+    KCSQuery* query = [KCSQuery query];
+    [[KCSAppdataStore storeWithOptions:@{KCSStoreKeyCollectionName: [NSString stringWithFormat:@"Entries"],
+                                         KCSStoreKeyCollectionTemplateClass: [Entry class]}] queryWithQuery:query withCompletionBlock:^(NSArray *success, NSError *error) {
+        
+        if (error != nil) {
+            NSLog(@"An error occurred on fetch: %@", error);
+            completion(nil);
+        } else {
+            if (success && success.count > 0) {
+                completion(success);
+            }
+        }
+        
+    } withProgressBlock:nil];
+}
+
 - (void)getRankingsFrom:(NSString*)pos fromWeek:(NSNumber*)week withOptions:(NSDictionary*)options withSuccess:(void (^)(NSArray *success))completion {
     KCSQuery* query = [KCSQuery query];
     [[KCSAppdataStore storeWithOptions:@{KCSStoreKeyCollectionName: [NSString stringWithFormat:@"Rankings%@", pos.uppercaseString],

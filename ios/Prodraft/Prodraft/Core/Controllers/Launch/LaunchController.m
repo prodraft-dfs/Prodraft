@@ -21,6 +21,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setupLogo];
+    
     NSLog(@"Boom!");
     
     if ([Services sharedInstance].currentUser) {

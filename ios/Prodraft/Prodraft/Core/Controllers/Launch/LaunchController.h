@@ -8,6 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface LaunchController : UIViewController
+@interface LaunchController : BaseController
 
 @end

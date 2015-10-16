@@ -7,8 +7,6 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <KinveyKit/KinveyKit.h>
-#import "Stat.h"
 
 @class Stat;
 

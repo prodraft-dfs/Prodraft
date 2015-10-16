@@ -9,9 +9,37 @@
         <view contentMode="scaleToFill" id="iN0-l3-epB">
             <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <imageView userInteractionEnabled="NO" alpha="0.10000000000000002" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="icon-transparent-alt.png" translatesAutoresizingMaskIntoConstraints="NO" id="n0w-jg-TWz">
+                    <rect key="frame" x="91" y="82" width="418" height="418"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="418" id="GZn-wQ-4MX"/>
+                        <constraint firstAttribute="width" constant="418" id="GdN-cz-BA1"/>
+                    </constraints>
+                </imageView>
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo.png" translatesAutoresizingMaskIntoConstraints="NO" id="ReU-ZX-HDJ">
+                    <rect key="frame" x="188" y="148" width="224" height="224"/>
+                    <animations/>
+                    <constraints>
+                        <constraint firstAttribute="width" constant="224" id="MUD-c3-hzo"/>
+                        <constraint firstAttribute="height" constant="224" id="cbW-fQ-q6O"/>
+                    </constraints>
+                </imageView>
+            </subviews>
             <animations/>
-            <color key="backgroundColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+            <color key="backgroundColor" red="0.14595170454545459" green="0.14595170454545459" blue="0.14595170454545459" alpha="1" colorSpace="calibratedRGB"/>
+            <constraints>
+                <constraint firstAttribute="centerX" secondItem="n0w-jg-TWz" secondAttribute="centerX" id="Qke-dQ-e03"/>
+                <constraint firstAttribute="centerY" secondItem="ReU-ZX-HDJ" secondAttribute="centerY" constant="40" id="Uro-pQ-dGn"/>
+                <constraint firstAttribute="centerY" secondItem="n0w-jg-TWz" secondAttribute="centerY" constant="9" id="YCY-TE-zPf"/>
+                <constraint firstAttribute="centerX" secondItem="ReU-ZX-HDJ" secondAttribute="centerX" id="zQ7-jX-qmY"/>
+            </constraints>
             <point key="canvasLocation" x="442" y="377"/>
         </view>
     </objects>
+    <resources>
+        <image name="icon-transparent-alt.png" width="700" height="700"/>
+        <image name="logo.png" width="1024" height="1024"/>
+    </resources>
 </document>
