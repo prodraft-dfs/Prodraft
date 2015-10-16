@@ -30,10 +30,15 @@
     }
 }
 
-- (void)checkAuth {
+#pragma mark - API Methods
+
+- (BOOL)checkAuth {
     if ([KCSUser activeUser]) {
         self.currentUser = [KCSUser activeUser];
-        NSLog(@"%@ - %@ -- Already Logged In", self.currentUser.userId, self.currentUser.email);
+        return YES;
+    }
+    else {
+        return NO;
     }
 }
 
@@ -56,7 +61,7 @@
             
             NSString* message = [errorOrNil localizedDescription];
             if (errorOrNil.code == KCSLoginFailureError) {
-                message = NSLocalizedString(@"Check that the username and password are correct and try again.", @"Invalid username or password mesasge");
+                message = @"Check that the username and password are correct and try again.";
             }
             
             UIAlertView* alert = [[UIAlertView alloc] initWithTitle:@"Login"

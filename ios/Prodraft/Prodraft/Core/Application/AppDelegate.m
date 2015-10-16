@@ -27,7 +27,14 @@
     
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     self.window.backgroundColor = [UIColor darkGrayColor];
-    self.window.rootViewController = [[LaunchController alloc] initWithNibName:@"LaunchController" bundle:nil];
+    if ([[Services sharedInstance] checkAuth]) {
+        self.window.rootViewController = [[LaunchController alloc] initWithNibName:@"LaunchController" bundle:nil];
+    }
+    else {
+        UIViewController *controller = [[UIViewController alloc] init];
+        controller.view.backgroundColor = [UIColor redColor];
+        self.window.rootViewController = controller;
+    }
     [self.window makeKeyAndVisible];
     return YES;
 }

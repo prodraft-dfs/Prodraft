@@ -31,8 +31,9 @@
         p.Points = @18.68;
         p.PlayerId = @"14";
         
-//        NSDictionary *options = @{@"Stat":p};
-        NSDictionary *options = @{@"PlayerId":@"14"};
+        NSDictionary *options = @{@"Stat":p};
+        options = @{@"PlayerId":@"14"};
+        options = nil;
         
         [[Services sharedInstance] getRankingsFrom:@"QB" fromWeek:@6 withOptions:options withSuccess:^(NSArray *success) {
             if (success) {
@@ -57,9 +58,10 @@
         pp.Salary = @9100;
         pp.PlayerId = @"14";
         
-//        NSDictionary *option = @{@"Ranking":pp};
+        NSDictionary *option = @{@"Ranking":pp};
+        option = nil;
         
-        [[Services sharedInstance] getStatsfromWeek:@6 fromPosition:nil withOptions:nil withSuccess:^(NSArray *success) {
+        [[Services sharedInstance] getStatsfromWeek:@6 fromPosition:nil withOptions:option withSuccess:^(NSArray *success) {
             if (success) {
                 int index = 0;
                 for (Stat *player in success) {

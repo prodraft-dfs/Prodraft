@@ -1,0 +1,37 @@
+//
+//  Prodraft-PrefixHeader.pch
+//  Prodraft
+//
+//  Created by Mark Evans on 10/16/15.
+//  Copyright (c) 2015 Pro Draft, LLC. All rights reserved.
+//
+
+#import <Availability.h>
+
+#ifndef __IPHONE_4_0
+#warning "This project uses features only available in iOS SDK 4.0 and later."
+#endif
+
+#ifdef __OBJC__
+#import <UIKit/UIKit.h>
+#import <Foundation/Foundation.h>
+#import "AppDelegate.h"
+#import "Services.h"
+#import <KinveyKit/KinveyKit.h>
+#import "Ranking.h"
+#import "Stat.h"
+#endif
+
+#define DEGREES_TO_RADIANS(angle) ((angle) / 180.0 * M_PI)
+#define IS_VERSION_GREATER_THAN_OR_EQUAL_TO(v)  ([[[UIDevice currentDevice] systemVersion] compare:v options:NSNumericSearch] != NSOrderedAscending)
+#define IS_IPAD (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPad)
+#define IS_IPHONE (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone)
+#define IS_IPHONE_4 ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && [[UIScreen mainScreen] bounds].size.height == 480.0)
+#define IS_IPHONE_5 ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && [[UIScreen mainScreen] bounds].size.height == 568.0)
+#define IS_IPHONE_6 ((UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) && [[UIScreen mainScreen] bounds].size.width == 375.0)
+#define IS_IPHONE_6_PLUS (IS_IPHONE && [[UIScreen mainScreen] bounds].size.width == 414.0)
+#define IS_RETINA ([[UIScreen mainScreen] scale] == 2.0)
+#define app ((AppDelegate *)[[UIApplication sharedApplication] delegate])
+
+#define kUserId @"UserId"
+#define kEmail @"Email"
