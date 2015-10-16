@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "LaunchController.h"
 #import <KinveyKit/KinveyKit.h>
+#import "Services.h"
 
 @interface AppDelegate ()
 
